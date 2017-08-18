@@ -1,0 +1,122 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Check Ticket</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+    <a href="#"><strong>Check My Tickets</strong></a>
+	<a href="#">Ticket: #{{ ticket.id }}</a>
+  </div>
+</div>
+
+ 
+<!--AGENT AND TICKET DETAILS WIDGET-->  
+<section class="page-content">
+<h1 class="heading" style="color:#000; font-weight: bold;">#({{ ticket.id }}): {{ ticket.subject }}</h1>
+	{% assign agent = ticket.agent %}
+	{% if agent_visible == true and agent %}
+	  <div class="ticket-details">
+        <b>Requester: </b><em>{{ ticket.requester.name }}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>Priority: </b><em>{{ ticket.priority }}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>Agent assigned: </b><em>{{ agent.name }}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>Status: </b><em>{{ ticket.status }}</em>
+      </div>
+	{% endif %}
+	
+	{% snippet ticket_survey %}
+<!--AGENT AND TICKET DETAILS WIDGET-->
+
+      <!--REPLY, MARK AS CLOSED, ADD PEOPLE BUTTONS-->
+		{% if portal.user %}
+			<section class="toolbar-actions leftRightMargin" id="ticket-toolbar">
+				<div class="btn-group" id="ticket-toolbar">
+					{% unless ticket.closed? %}
+						<a href="#reply-to-ticket" class="btn btn-small" data-proxy-for="#add-note-form">
+						<span class="hide-in-mobile">{% translate reply %}</span>
+						<i class="icon-reply show-in-mobile"></i> 
+						</a>
+						<a href="{{ ticket.close_ticket_url }}" data-method="post" class="btn btn-small">
+							<span class="hide-in-mobile">{% translate portal.tickets.mark_closed %}</span>
+							<i class="icon-close-ticket show-in-mobile"></i>
+						</a>
+						<a href="#add-people" rel="freshdialog" title="{% translate portal.tickets.add_people_title %}" 
+							data-width="400" class="btn btn-small" data-submit-label="{% translate portal.tickets.add_people %}">
+							<span class="hide-in-mobile">{% translate portal.tickets.add_people %}</span>
+							<i class=" icon-user-add show-in-mobile"></i>
+						</a>
+					{% endunless %}
+				</div>			
+			</section>
+		{% endif %}
+  <!--REPLY, MARK AS CLOSED, ADD PEOPLE BUTTONS-->
+    
+  <!--REQUESTOR AND DETAILS-->
+		<section class="user-comment leftRightMargin" id="ticket-description">			
+			<div class="user-info">
+				{{ ticket.requester | profile_image:'user-pointer-bottom', '40px', '40px' }}
+				<div class="user-details">
+					<h4 class="user-name">{{ ticket.requester.name | h}}</h4>
+					<div class="p-info tooltip" title="{{ ticket.created_on | short_day_with_time }}">{% translate portal.reported %} {{ ticket.created_on | time_ago }}</div>
+				</div>
+			</div>
+			<div class="p-content clearfix">
+				<div class="p-desc">
+				  {% if ticket.service_request?%}
+					{% snippet requested_items%}
+				  {% else %}
+				   {{ ticket.description_html }}
+				  {% endif %}
+				</div>
+				{{ ticket | ticket_attachemnts }}
+			</div>
+		</section>
+  <!--REQUESTOR AND DETAILS-->
+  
+    <!--TICKET COMMENT/REPLY-->
+		<section class="leftRightMargin" id="ticket-comments">
+			{% for comment in ticket.public_comments %}
+				<section class="user-comment {% if comment.user.is_agent %} comment-by-agent {% endif %}" 
+						 id="ticket-note-{{ comment.id }}">
+
+					<div class="user-info">
+						{{ comment.user | profile_image:'user-pointer-bottom', '40px', '40px' }}
+						<div class="user-details">
+							<h4 class="user-name">{{ comment.user.name | h }}</h4> 
+							<div class="p-info tooltip" title="{{ comment.created_on | short_day_with_time }}">{% translate portal.said %} {{ comment.created_on | time_ago }}</div>
+						</div>
+					</div>
+					
+					<div class="p-content">						
+						<div class="p-desc">
+							{{ comment.description }}
+						</div>
+							{{ comment | comment_attachments }}
+    <!--TICKET COMMENT/REPLY-->
+                      
+					</div>
+				</section>
+			{% endfor %}
+			{% if ticket.closed? %}
+				{{ ticket | status_alert }}
+			{% endif %}
+			<section id="reply-to-ticket" name="reply-to-ticket" class="user-comment {% if ticket.closed? %}hide{% endif %}">
+				<div class="user-info">
+					{{ portal.user | profile_image:'user-pointer-bottom', '40px', '40px' }}
+					<div class="user-details">
+						<h4 class="user-name">{{ portal.user.name | h}}</h4>
+                      <div class="p-info tooltip">say something now...</div>
+					</div>
+				</div>
+				<div class="p-content">
+					<input type="text" class="special span12" 
+							placeholder="{% translate portal.tickets.reply_placeholder %}" id="add-note-form-proxy" 
+							data-proxy-for="#add-note-form" />
+
+					<div id="add-note-form" class="hide">
+						{% snippet ticket_reply %}
+					</div>
+				</div>
+              <div><br></div>
+			</section>
+		</section>
+	</section>
+
+{% snippet ticket_add_people %}

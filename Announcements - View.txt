@@ -1,0 +1,65 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Announcements</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+    <a href="portal.show_announcements_url">Announcements Home</a>
+    <a href="#">{{ announcement.title }}</a>
+  </div>
+</div>
+
+<section class="page-content">	
+	<div class="announcement-content clearfix">
+		{% assign first_post = comments.last %}
+		<div class="user-info" style="margin-left: 100px; margin-right: 100px;">
+			<h1 class="heading">{{ announcement.title }}</h1>
+
+			<div class="user-details">
+				<div class="clearfix">
+                  <h4 class="user-name pull-left"><strong>Posted by: </strong>{{ first_post.user.name | h}}</h4>
+					<div class="p-info pull-left">
+						{{ announcement.planned_start_date | time_ago }}
+					</div>
+				</div>
+				<div class="announcement-body">
+					{{ first_post.body_html }}
+            	</div>
+			</div>
+		</div>
+	</div>
+	<div class="comments-list">
+		{% if comments.size >1 %}
+		<div class="comment-header">
+			<span class="comment-title">{% translate comments %}</span>
+		</div>
+		{% endif %}
+
+		{% for post in comments %}
+			{% if post.id != first_post.id %}
+				<div class="user-info">
+					<div class="pull-left profile_img">
+						{{ post.user | profile_image: '30px', '30px' }}
+					</div>
+					<div class="user-details">
+						<div class="clearfix">
+							<h4 class="user-name pull-left">{{ post.user.name | h}}</h4> 
+							<div class="p-info pull-left">
+								{{ post.created_on | time_ago }}
+							</div>
+						</div>
+						<div id="post-{{post.id}}-description" class="announcement-body">
+							{{ post.body_html }}
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+</section>
+
+<section class="sidebar content rounded-6 min-height-on-desktop">	
+</section>
+
+<script>
+	highlight_code();
+</script>

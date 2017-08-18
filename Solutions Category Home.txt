@@ -1,0 +1,22 @@
+<div class="page-banner">
+  <div class="banner-text" style="tesxt-transform:uppercase;"><strong>{{ category.name }}</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+    <a href="{{ solution.home_url }}"><strong>Knowledge Base Home</strong></a>
+    <a href="#">{{ category.name }}</a>
+  </div>
+</div>
+<section class="page-content">
+		          <div class="cs-g-c">
+					{% for folder in category.folders %}
+						{% if folder.articles_count > 0 %}
+							<section class="cs-g article-list">
+								<div class="list-lead">
+                                  <a href="{{folder.url}}">{{folder.name}} ({{ folder.articles_count }})</a>
+								</div>
+								{{ folder | article_list }}									
+							</section>
+						{% endif %}
+					{% endfor %}
+			</div>	
+</section>

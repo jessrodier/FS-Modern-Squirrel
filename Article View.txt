@@ -1,0 +1,80 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Knowledge Base</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong> Portal Home</strong></a>
+    <a href="{{ portal.solutions_home_url }}"><strong>Knowledge Base Home</strong></a>
+    <a href="{{ article.folder.url }}"><strong>{{ article.folder.name }}</strong></a>
+	<a href="#">{{ article.title }}</a>
+  </div>
+</div>
+
+<section class="page-content">
+  <div class="omega" style="border: none;"></div>
+
+  <div class="article-list-content" style="background: #f1f1f1;">
+    <h1 class="heading"><strong>{{ article.title }}</strong><a href="javascript:print();" class="icon-print solution-print-icon" title="{% translate portal.print_title %}"></a></h1>
+	<p>Modified on: {{ article.modified_on | short_day_with_time }}</p>
+	<hr />
+    {% comment %}
+	  <div>
+	    {% for tag in article.tags %}
+          <span class="label label-info">{{tag.name}}</span>
+	    {% endfor %}
+	  </div>
+	{% endcomment %}
+    
+    <div class="articlebody">
+	  <article>
+		{{ article.body }}
+	  </article>
+    </div>
+  </div>
+  
+  <hr />
+    
+    <div class="article-base">
+	
+	{% if article.attachments.size > 0  %}
+	<div class="cs-g-c attachments" id="article-attachments">
+		{% for attachment in article.attachments %}
+			<div class="cs-g-3 attachment">
+				<img src="{{ attachment.thumbnail }}" class="file-thumbnail {% if attachment.is_image? %} file-image {% endif %} " />
+				<a href="{{ attachment.url }}" class="ellipsis file-name" target="_blank">{{ attachment.filename }}</a>
+				<p class="help-text file-size">({{ attachment.size }})</p>
+			</div>
+		{% endfor %}
+	</div>
+	<hr />
+	{% endif %}
+	
+	<p class="article-vote" id="voting-container">
+		{% translate feedback.title %}
+		<span data-href="{{ article.thumbs_up_url }}" class="vote-up a-link" 
+			data-remote="true" data-method="put" data-update="#voting-container" 
+			data-update-with-message="{% translate feedback.up_vote_thank_you_message %}">
+			{% translate feedback.upvote %}
+		</span>
+		<span data-href="{{ article.thumbs_down_url }}" class="vote-down a-link" 
+			data-remote="true" data-method="put" data-update="#vote-feedback-form"
+			data-hide-dom="#voting-container" data-show-dom="#vote-feedback-container">
+			{% translate feedback.downvote %}
+		</span>
+	</p>
+
+	<div class="hide" id="vote-feedback-container">
+		<div class="lead">{% translate feedback.down_vote_form_title %}</div>
+		<div id="vote-feedback-form">
+			<div class="loading-box"></div>
+		</div>
+	</div>
+      <div class="separator"></div>
+
+    
+        <div class="article-search">  
+  	  <p>Not what you were looking for? Try a search!</p>
+      <div class="search-form">
+        {% snippet search_form %}
+      </div>
+    </div>
+
+</section>

@@ -1,0 +1,157 @@
+<!-- START: Search Form -->
+<div class="search-container">
+    <div class="search-form">
+        <h1 id="search-upper">{{ portal.name }}</h1>
+        <h1 id="search-lower">How can we help you?</h1>
+        <div class="search-field">
+            {% snippet search_form %}
+        </div>
+    </div>
+</div>
+<!-- END: Search Form -->
+
+
+<!-- START: Most Reccent Announcement Container -->
+<div class="announcement-container">
+    <div class="announcement-label">
+      <h3><strong>Service Desk Announcement&nbsp</strong><a href="{{ portal.show_announcements_url }}">(<strong><em> View All </em></strong>)</a></h3>
+    </div>
+    <div class="announcement-content">
+        {{ portal | filter_for_announcements_new }}
+    </div>
+</div>
+<!-- END: Most Recent Announcement Container -->
+
+
+<!-- START: 3-Block Directory Container -->
+<div class="directory-container" >
+    <div class="directory-content">
+
+        <!-- Knowledge Base Directory Box -->
+        <a href="{{ portal.solutions_home_url }}">
+            <div class="direct-1">
+                <img src="https://i.imgur.com/qCI4ErO.png" style="height:51px"/>
+                <span>
+                    <h3><b>Knowledge Base</b></h3>
+	                <p>All the knowledge you need, well documented and stored in one place for your convenience.</p>
+                </span>
+            </div>
+        </a>
+            
+        <!-- Announcement Directory Box -->   
+	    <a href="{{ portal.show_announcements_url }}">
+            <div class="direct-2">
+                <img src="https://i.imgur.com/4kT1QTE.png" style="height:51px"/>
+                <span>
+                    <h3><b>Announcements</b></h3>
+	                <p>Don't miss a beat! Keep track of the latest news and announcements from your Service Desk.</p>
+                </span>
+            </div>
+	    </a>
+
+        <!-- Release Notes Directory Box -->    
+	    <a href="#"> <!-- must provide a link to the specific folder that you wish to use, or replace heading and text and link to something else! -->
+            <div class="direct-3">
+                <img src="https://i.imgur.com/TAC8J5v.png" style="height:51px"/>
+                <span>
+                    <h3><b>Release Notes</b></h3>
+	                <p>Read about the latest software releases, feature requests, and bug fixes from your Developers!</p>
+                </span>
+            </div>   
+	    </a>
+
+    </div>
+</div>
+<!-- END: 3-Block Directory Container -->
+
+
+<!-- START: Page Content Container -->
+<div class="lower-content">
+
+    <!-- Open Main Content -->
+    <div class="home-content">
+          
+        <!-- Knowledge Base Section (Main) -->
+      <h2 style="text-align:center; background:#425d71; color:#fff;"><a href="{{ portal.solutions_home_url }}">KNOWLEDGE BASE</a></h2>
+            <div class="content-2">
+                {% for category in portal.solution_categories %}
+              		{% if category.folders_count > 0 %}
+              <h3 class=""><a href="{{ category.url }}">{{ category.name }}</a></h3>
+                        <ul class="">
+                            {% for folder in category.folders %}
+                                <li>
+                                    <a href="{{folder.url}}" class="active">{{folder.name}} <span>({{ folder.articles_count }}) </span></a>
+                                </li>
+                            {% endfor %} 
+                        </ul>
+              		<br />
+              {% endif %}
+                {% endfor %}
+        </div> 
+
+        <!-- Helpful Links Section (Main) -->
+        <h2 style="text-align:center; background:#425d71; color:#fff; margin-top: 25px;">HELPFUL LINKS</h2>
+            <div class="content-1">
+                <div class="links-block">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <a href="#" target="_blank"><li>Maintenance</li></a>
+                        <a href="#" target="_blank"><li>Online Meetings</li></a>
+                        <a href="#" target="_blank"><li>Webmail</li></a>
+                    </ul>
+                </div>
+                <div class="links-block">
+                    <h2>Customer Links</h2>
+                    <ul>
+                        <a href="#" target="_blank"><li>Online Store</li></a>
+                        <a href="#" target="_blank"><li>Corporate Website</li></a>
+                        <a href="#" target="_blank"><li>Corporate Facebook</li></a>
+                    </ul>
+                </div>
+                <div class="links-block">
+                    <h2>Employment Links</h2>
+                    <ul>
+                        <a href="#" target="_blank"><li>Timeclock Portal</li></a>
+                        <a href="#" target="_blank"><li>Employee Benefits</li></a>
+                        <a href="#" target="_blank"><li>Retirement Consultants</li></a>
+                    </ul>
+                </div>
+            </div>
+
+		<!-- "Can't find what you're looking for?" Section (Main) -->
+		<div class="content-3">
+  			<h2>Can't find what you're looking for?</h2>
+    		<a href="{{ portal.new_ticket_url }}">
+  				<div class="ticket-btn">
+          			<span>Submit a Ticket</span>
+        		</div>
+    		</a>
+		</div>
+
+    </div>
+    <!-- Close Main Content -->
+
+	<!-- Open Right Sidebar Content (Not Visible in Mobile View) -->  
+    <div class="right-sidebar" >
+        <h2 style="margin-bottom: 15px; text-align: center;">Recent Articles</h2>
+            {% for article in portal.recent_articles limit:20 %} <!-- "portal.recent_articles" is a dynamic placeholder found in the FreshThemes Guide. It displays ONLY recently created articles (not recently modified), and there is a 4-hour delay before the new article will appear -->
+                <li>
+                    <span><a href="{{article.url}}" style="font-size:12pt;"><b>{{article.title}}</b></a> <span style="font-size:8pt;">(Created On: {{ article.modified_on | short_day_with_time }})</span></span>
+                    <br />
+                    {{ article.body_plain | truncate:100 }} <!-- 100-character article preview -->
+                    <hr />
+                </li>
+            {% endfor %}
+    </div>
+    <!-- Close Right Sidebar Content -->
+      
+</div>          
+<!-- END: Page Content Container -->
+
+
+<!-- START: Footer Container (Displays on Home Page ONLY) -->
+<div class="footer-content">
+	&copy; 2017 <b>Company Name.</b> All Rights Reserved.<br />
+	<span class="footerSmall"><b>FS Modern Squirrel Theme v1.0.0</b>  |  <b>Published on:</b> August 18, 2017</span>
+</div>
+<!-- END: Footer Container (Displays on Home Page ONLY) -->

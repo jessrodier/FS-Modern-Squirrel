@@ -1,0 +1,38 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Search Results</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+	<a href="#">Search Results</a>
+  </div>
+</div>
+
+<section class="page-content">
+	<h2 class="heading">{% translate portal.search.results_for %} "{{ search.term | escape_once }}"</h2>	
+	{{ search | default_filters }}
+	<hr />
+	{% if search.result_count != 0 %}
+		<ul class="search-results-list">
+			{% for result in search.results %}
+			<li class="{{ result.type | downcase }}-item">				
+				<a href="{{result.url}}">{{ result.title }}</a>
+				<span class="label label-small label-light">{{ result.group }}</span>
+				<div>{{ result.desc }}</div>
+				<p class="help-text">
+					{{ result.source.created_on | short_day_with_time }}
+				</p>
+			</li>
+			{% endfor %}
+		</ul>
+		{{ search.pagination }}
+	{% else %}
+		<div class="lead">{% translate search.no_results_msg %}</div>
+	{% endif %}
+  
+    <div class="results-search">  
+  	    <p style="color: #000; font-size: 16px;"><strong>Try again!</strong></p>
+        <div class="search-form">
+            {% snippet search_form %}
+        </div>
+	</div>
+
+</section>

@@ -1,0 +1,11 @@
+<!-- Page Title -->
+<title>Wilson's Service Desk</title>
+
+<!-- Meta Information -->
+	<meta charset="UTF-8">
+	<meta name="description" content="Freshservice Theme - Modern Squirrel">
+	<meta name="author" content="Jess Rodier">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

@@ -1,0 +1,54 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Knowledge Base</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+    <a href="{{ portal.solutions_home_url }}"><strong>Knowledge Base Home</strong></a>
+    <a href="#">{{ folder.name }}</a>
+  </div>
+</div>
+<section class="page-content">
+<div class="flex-container">
+  <div class="sidebar-flex" style="border-right:1px solid #e0e0e0;">
+    {% if portal.articles_count > 0 %}
+    {% for category in portal.solution_categories %}
+    {% if category.folders_count > 0 %}
+    <h3 class="sidebar-heading"><a href="{{ category.url }}">{{ category.name }}</a></h3>
+    <div class="separator"></div>
+    <ul class="solution_list">
+      {% for folder in category.folders %}
+      {% if folder.articles_count > 0 %}
+      <li>
+        <a href="{{folder.url}}" class="active">{{folder.name}} <span>({{ folder.articles_count }}) </span></a>
+      </li>
+      {% endif %}
+      {% endfor %} 
+    </ul>
+    {% endif %}
+    {% endfor %}		
+    {% else %}
+    <div class="lead">{% translate portal.no_articles_info_1 %}</div>
+    <div class="lead-small">{% translate portal.no_articles_info_2 %}</div>
+    {% endif %}
+  </div>
+  
+  <div class="main-flex">
+    <div class="article-list-content">
+	  <h1 class="folder-heading">{{ folder.name }}</h1>
+      <p class="folder-description">{{ folder.description }}</p>
+      {% paginate folder.articles by 30 %}
+      <ul>
+      {% for article in paginate.collection %}
+        <li class="">
+            <a href="{{article.url}}" class="c-link">{{article.title}}</a>
+        </li>
+      {% endfor %}
+      </ul>
+      {% if folder.articles == empty %}
+      <p class="lead">~ Watch this space for articles regarding {{ folder.name }} ~</p>
+      {% endif %}
+      {{ paginate | default_pagination }}
+      {% endpaginate %}
+    </div>
+  </div>
+</div>
+<section> 

@@ -1,0 +1,14 @@
+<section id="login-container" class="content-form">
+  <div class="login-form">
+    <div id="login-form">
+      <h1>Login to Wilson's Support Portal</h1>
+      <p>Enter your credentials below:</p>
+      {% snippet login_form %}
+    </div>
+    <div id="forgot-form" class="hide">
+      <h2 class="heading">{% translate forgot_password %}</h2>
+      <p>{% translate portal.reset_password %}</p>
+      {% snippet forgot_password_form %}
+    </div>
+  </div>
+</section>

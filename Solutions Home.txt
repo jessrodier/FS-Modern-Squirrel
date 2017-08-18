@@ -1,0 +1,32 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Knowledge Base</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+    <a href="#">Knowledge Base Home</a>
+  </div>
+</div>
+
+<section class="page-content">
+	{% if portal.articles_count > 0 %}
+		{% for category in portal.solution_categories %}
+			{% if category.folders_count > 0 %}
+  <h3 class="heading category-header"><a href="{{ category.url }}">{{ category.name }}</a></h3>
+		          <div class="cs-g-c">
+					{% for folder in category.folders %}
+						{% if folder.articles_count > 0 %}
+							<section class="cs-g article-list">
+								<div class="list-lead">
+                                  <a href="{{folder.url}}">{{folder.name}} ({{ folder.articles_count }})</a>
+								</div>
+								{{ folder | article_list }}									
+							</section>
+						{% endif %}
+					{% endfor %}
+			</div>
+			{% endif %}
+		{% endfor %}		
+	{% else %}
+		<div class="lead">{% translate portal.no_articles_info_1 %}</div>
+		<div class="lead-small">{% translate portal.no_articles_info_2 %}</div>
+	{% endif %}
+</section>

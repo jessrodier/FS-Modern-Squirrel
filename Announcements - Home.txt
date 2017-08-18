@@ -1,0 +1,28 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Announcements</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+    <a href="#">Announcements Home</a>
+  </div>
+</div>
+
+<section class="page-content">
+	{% paginate portal.itil_announcements by 10 %}
+		<div class="c-list topic-list" id="forum-topic-list" style="margin-left: 100px; margin-right: 100px;">					
+			{% for topic in paginate.collection %}
+				<div class="c-row c-user-thumb">
+					{{ topic.user | profile_image }}
+					<div class="ellipsis">						
+						<a class="c-link" title="{{topic.title | h}}" href="{{topic.url}}">{{topic.title | h}}</a>
+					</div>				
+					<div class="help-text"> 
+						{{ topic | topic_brief }}
+					</div>
+				</div>
+			{% else %}
+				<p class="lead">{% translate portal.no_topics_in_this_view %}</p>
+			{% endfor %}
+		</div>			
+		{{ paginate | default_pagination }}
+	{% endpaginate %}
+</section>

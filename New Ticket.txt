@@ -1,0 +1,25 @@
+<div class="page-banner">
+  <div class="banner-text"><strong>Submit a Ticket to Report an Incident</strong></div>
+  <div class="breadcrumb">
+    <a href="{{ portal.home_url }}"><strong>Portal Home</strong></a>
+    <a href="#">New Ticket</a>
+  </div>
+</div>
+<section class="page-content">
+  <div class="flex-container" id="create-ticket">
+    <div class="main-flex">
+      <p><strong>*Guide to Choosing a Ticket Priority:</strong></p>
+      <ul>
+        <li>LOW" - not critical, can wait<span class="text-mobile-hide">; will be resolved within 56 business hours</span></li>
+      <li>"MEDIUM" - component down, business/job impacted<span class="text-mobile-hide">; will be resolved within 25 business hours</span></li>
+      <li>"HIGH" - system or device down, business/ job halted<span class="text-mobile-hide">; will be resolved within 8 business hours</span></li>
+      <li>"URGENT" - critical outage, needs to be addressed immediately<span class="text-mobile-hide">; will be resolved within 2 business hours</span></li>
+      </ul>
+      <br />
+      {% snippet new_ticket_form %}
+    </div>
+  
+      <div class="sidebar-flex" id="new-ticket-search"><br /></div>
+  
+	</div>
+</section>
