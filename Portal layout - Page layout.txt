@@ -9,8 +9,7 @@
      
      {{ content_for_layout }}	
 
-      <!-- CURRENTLY BEING LOADED ON PORTAL HOME PAGE ONLY
-		<div class="footer-wrapper">
+      <!--<div class="footer-wrapper">
          {{ footer }}
       </div>-->
      

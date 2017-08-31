@@ -3,8 +3,8 @@
 
 <!-- Meta Information -->
 	<meta charset="UTF-8">
-	<meta name="description" content="Freshservice Theme - Modern Squirrel">
-	<meta name="author" content="Jess Rodier">
+	<meta name="description" content="Wilson Language Training Service Desk">
+	<meta name="author" content="Jessica Rodier">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- jQuery -->
