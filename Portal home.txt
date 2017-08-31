@@ -162,6 +162,6 @@ Description: A modernized informative template featuring search, quick links, a 
 <div class="footer-content">
 	<img src="https://i.imgur.com/s3iMZ1S.png"><br />
 	&copy; 2017 <b>Wilson Language Training.</b> All Rights Reserved.<br />
-	<span class="footerSmall"><b>Modern Squirrel v4.0.0</b>  |  <b>Published on:</b> August 18, 2017</span>
+	<span class="footerSmall"><b>Modern Squirrel v1.0.0</b>  |  <b>Published on:</b> August 18, 2017</span>
 </div>
 <!-- END: Footer Container (Displays on Home Page ONLY) -->
