@@ -1,3 +1,8 @@
+    <!-- 
+Page: Portal Home
+Description: A modernized informative template featuring search, quick links, a list of folders in the knowledge base, and a dynamic "Recent Articles" sidebar.
+    -->
+
 <!-- START: Search Form -->
 <div class="search-container">
     <div class="search-form">
@@ -50,7 +55,7 @@
 	    </a>
 
         <!-- Release Notes Directory Box -->    
-	    <a href="#"> <!-- must provide a link to the specific folder that you wish to use, or replace heading and text and link to something else! -->
+	    <a href="solutions/folders/26398">
             <div class="direct-3">
                 <img src="https://i.imgur.com/TAC8J5v.png" style="height:51px"/>
                 <span>
@@ -90,30 +95,34 @@
         </div> 
 
         <!-- Helpful Links Section (Main) -->
-        <h2 style="text-align:center; background:#425d71; color:#fff; margin-top: 25px;">HELPFUL LINKS</h2>
+        <h2 style="text-align:center; background:#425d71; color:#fff; margin-top: 25px;">HELPFUL WILSON LINKS</h2>
             <div class="content-1">
                 <div class="links-block">
                     <h2>Quick Links</h2>
                     <ul>
-                        <a href="#" target="_blank"><li>Maintenance</li></a>
-                        <a href="#" target="_blank"><li>Online Meetings</li></a>
-                        <a href="#" target="_blank"><li>Webmail</li></a>
+                        <a href="https://app.certcapture.com/logins/login" target="_blank"><li>CertCapture</li></a>
+                        <a href="http://arthur/WLTC/main.aspx" target="_blank"><li>CRM</li></a>
+                        <a href="https://wilsonlanguage.macmms.com/" target="_blank"><li>fiix</li></a>
+                        <a href="https://www.gotomeeting.com/" target="_blank"><li>GoToMeeting</li></a>
+                        <a href="https://webmail.wilsonlanguage.com/owa/auth/logon.aspx?replaceCurrent=1&url=https%3a%2f%2fwebmail.wilsonlanguage.com%2fowa%2f" target="_blank"><li>Webmail</li></a>
                     </ul>
                 </div>
                 <div class="links-block">
                     <h2>Customer Links</h2>
                     <ul>
-                        <a href="#" target="_blank"><li>Online Store</li></a>
-                        <a href="#" target="_blank"><li>Corporate Website</li></a>
-                        <a href="#" target="_blank"><li>Corporate Facebook</li></a>
+                        <a href="https://store.wilsonlanguage.com/" target="_blank"><li>Online Store</li></a>
+                        <a href="https://wilsonacademy.com/login.aspx" target="_blank"><li>Wilson Academy</li></a>
+                        <a href="https://www.wilsonacademy.com/login.aspx?uri=https://www.wilsonacademy.com/Default.aspx_q_p=WilsonProfessionalCommunity" target="_blank"><li>WPC</li></a>
+                        <a href="http://www.wilsonlanguage.com/" target="_blank"><li>Corporate Website</li></a>
+                        <a href="https://www.facebook.com/WilsonLanguageTraining/" target="_blank"><li>WLT Facebook</li></a>
                     </ul>
                 </div>
                 <div class="links-block">
                     <h2>Employment Links</h2>
                     <ul>
-                        <a href="#" target="_blank"><li>Timeclock Portal</li></a>
-                        <a href="#" target="_blank"><li>Employee Benefits</li></a>
-                        <a href="#" target="_blank"><li>Retirement Consultants</li></a>
+                        <a href="https://workforcenow.adp.com/public/index.htm" target="_blank"><li>ADP Portal</li></a>
+                        <a href="https://benstrat.com/" target="_blank"><li>Benefit Strategies</li></a>
+                        <a href="https://www.rpgconsultants.com/rpgfocus-login/" target="_blank"><li>RPG Consultants</li></a>
                     </ul>
                 </div>
             </div>
@@ -151,7 +160,8 @@
 
 <!-- START: Footer Container (Displays on Home Page ONLY) -->
 <div class="footer-content">
-	&copy; 2017 <b>Company Name.</b> All Rights Reserved.<br />
-	<span class="footerSmall"><b>FS Modern Squirrel Theme v1.0.0</b>  |  <b>Published on:</b> August 18, 2017</span>
+	<img src="https://i.imgur.com/s3iMZ1S.png"><br />
+	&copy; 2017 <b>Wilson Language Training.</b> All Rights Reserved.<br />
+	<span class="footerSmall"><b>Freshservice v4.2.0</b>  |  <b>Published on:</b> August 18, 2017</span>
 </div>
 <!-- END: Footer Container (Displays on Home Page ONLY) -->
