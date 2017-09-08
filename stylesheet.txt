@@ -225,7 +225,6 @@ hr {
 
 /* Search Container (Home) */
 .search-container {
-  /*background: url(https://i.imgur.com/45URSIL.png);*/
   background: url(http://i.imgur.com/Akhb1LI.jpg);
   background-repeat: repeat;
   background-size: cover;
