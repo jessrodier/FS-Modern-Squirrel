@@ -1,7 +1,16 @@
-# FS Modern Squirrel
+# FS Modern Squirrel (WILSON)
 Version 1.0.0
 Description: A clean, but content-rich, modern theme for Freshservice portals.
 Notes: A changelog will be kept when there are updates, indicating which specific files were updated. 
+
+
+**PLEASE DO NOT FORK THE 'wilson-master' BRANCH. THIS BRANCH IS FOR A SPECIFIC SUPPORT PORTAL, AND WILL NOT APPLY TO YOUR BUSINESS. THERE ARE NO DIFFERENT FEATURES OR ANYTHING THAT WILL BENEFIT YOU...**
+
+
+**ALL FORKS MUST BE MADE FROM THE master BRANCH ONLY**
+
+
+**The wilson-master branch is used to maintain customizations for Wilson's Support Portal specifically, and is not to be used for any other portal. If you would like to use this theme, please work off of the master branch.**
 
 ###### INTRODUCTION
 ------------

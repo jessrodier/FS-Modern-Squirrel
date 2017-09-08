@@ -569,6 +569,7 @@ form.hc-search-form > * {
 
 /* Submit a Ticket Page */
 /* no styling needed at this point */
+
 /* Check Tickets Page */
 .c-row {
   border: 1px solid #96989C;
@@ -743,6 +744,15 @@ form.hc-search-form > * {
 p#voting-container {
   font-size: 1.5em;
   text-align: center; }
+
+.sm-search-form {
+  margin-bottom: 50px;
+}
+
+.sm-search-form form#hc-search-form {
+  width: 500px;
+  float: right;
+}
 
 /* Search Results */
 .results-search {
