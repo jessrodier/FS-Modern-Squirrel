@@ -11,6 +11,10 @@
 <section class="page-content">
   <div class="omega" style="border: none;"></div>
 
+  <div class="sm-search-form">
+        {% snippet search_form %}
+  </div>
+  
   <div class="article-list-content" style="background: #f1f1f1;">
     <h1 class="heading"><strong>{{ article.title }}</strong><a href="javascript:print();" class="icon-print solution-print-icon" title="{% translate portal.print_title %}"></a></h1>
 	<p>Modified on: {{ article.modified_on | short_day_with_time }}</p>
