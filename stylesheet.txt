@@ -560,7 +560,8 @@ form.hc-search-form > * {
   width: 450px;
   height: 100% !important;
   padding: 25px !important;
-  float: none; }
+  float: none;
+  right: 0; }
 
 .catalog-request .main .img-div {
   width: auto;
